@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot PazGuard</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">Bienvenido a nuestro ChatBot</div>
+        <div class="form">
+            {% for message in messages %}
+                <div class="inbox">
+                    <div class="icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="msg-header">
+                        <p>{{ message.text }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="typing-field">
+            <div class="input-data">
+                <form method="post">
+                    {% csrf_token %}
+                    <input id="data" name="text" type="text" placeholder="Escribe algo aquí.." required>
+                    <button id="send-btn" type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
